@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Patient Care
+{% endblock title %}
+{% block nav %}
+{% if request.user.usertype == 'doctor' %}
+    <li><a href="{% url 'pinfo:create' %}"><i class="fas fa-plus"></i>&nbsp; Add Patient</a></li>
+{% endif %}
+{% endblock nav %}
+
+{% block content %}
+<div class="container login-container">
+    <form class="form-inline my-2" action="{% url 'pinfo:search' %}" method="GET">
+        <input
+          class="form-control search-box"
+          type="search"
+          placeholder="Find patients..."
+          name="search_term"
+          value="{{search_term}}"
+        />
+      </form>
+    {% if patient %}
+    <div class="row">
+        {% for i in patient %}
+            {% include 'partials/_cards.html' %}
+        {% endfor %}
+    </div>
+    {% else %}
+        <h1>nothing here</h1>
+    {% endif %}
+</div>
+{% endblock content %}

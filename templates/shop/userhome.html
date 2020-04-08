@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav %}
+{% if user.usertype == "shopmanager" %}
+<li><a href="{% url 'shop:ownerview' %}">My Shop</a></li>
+{% endif %}
+{% endblock nav %}
+
+{% block content %}
+<div style="margin-top: 150px">
+    <form class="form-inline my-2" action="{% url 'shop:search' %}" method="GET">
+        <input
+          class="form-control search-box"
+          type="search"
+          placeholder="Find shops..."
+          name="search_term"
+          value="{{search_term}}"
+        />
+      </form>
+  {% if shops %}
+  <div class="row">
+    {% for i in shops %}
+        {% include 'partials/_shopcarduser.html' %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <h2>nothing here.</h2>
+  {% endif %}
+
+</div>
+
+{% endblock content %}

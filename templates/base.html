@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CovidSuraksha | {% block title %}
+  {% endblock title %}</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static './assets/favicon.png' %}" rel="icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/fontawesome/css/all.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  {% comment %} <link href="{% static 'assets/vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet"> {% endcomment %}
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="#header"><span>CovidSuraksha</span></a></h1>
+        {% comment %} <a href="#intro" class="scrollto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a> {% endcomment %}
+      </div>
+            <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{% url 'home' %}">Home</a></li>
+          {% block nav %}
+          {% endblock nav %}
+          {% if request.user.is_authenticated %}
+          <li><a href="{% url 'accounts:profile' request.user.usertype %}">Profile</a></li>
+          <li><a href="{% url 'logout'%}"><i class="fas fa-sign-in-alt"></i>&nbsp; logout</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Join us</a></li>
+          {% endif %}
+        </ul>
+      </nav><!-- .main-nav -->
+    </div>
+  </header><!-- #header -->
+  {% block content %}
+  {% endblock content %}
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+   <div class="container">
+    <div class="copyright">
+       &copy; Copyright <strong>sourav & team</strong>. All Rights Reserved
+      </div>
+     <div class="credits">
+       Designed by <a href="#">souravlayek</a>
+ </div>
+ </div>
+  </footer><!-- End Footer -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/mobile-nav/mobile-nav.js' %}"></script>
+  <script src="{% static 'assets/vendor/wow/wow.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  {% block extrajs %}
+  {% endblock extrajs %}
+</body>
+</html>

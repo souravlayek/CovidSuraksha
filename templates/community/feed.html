@@ -1,0 +1,114 @@
+{% extends 'base.html' %} {% load static %}
+{% block nav %}
+<li><a href="{% url 'community:addpost' %}"><i class="fas fa-plus"></i> New Post</a></li>
+{% endblock nav %}
+{% block content %}
+<div id="fullfeed" class="d-flex flex-wrap" style="margin-top: 100px; max-width:1920px;">
+	<div id="left-side" class="p-2 m-2">
+		<button type="button" class="btn btn-success pl-5 pr-5 pt-2 mb-2" data-toggle="modal" data-target="#exampleModal">
+            New Post
+        </button>
+		<form
+			class="form-inline my-2"
+			action="{% url 'community:search' %}"
+			method="GET"
+		>
+			<input
+				class="form-control search-box"
+				type="search"
+				placeholder="Find post..."
+				name="search_term"
+				value="{{search_term}}"
+			/>
+		</form>
+        
+        {% include 'partials/_post.html' %}
+		<div style="width: 250px;">
+			<div class="list-group">
+				<a
+					href="{% url 'community:filter' 'all' %}"
+					class="list-group-item list-group-item-action active"
+				>
+					Filters
+				</a>
+				<a href="{% url 'community:filter' 'Quarentine Community' %}" class="list-group-item list-group-item-action"
+					>Quarentine Community</a
+				>
+				<a href="{% url 'community:filter' 'Lockdown Stuck Community' %}" class="list-group-item list-group-item-action"
+					>Lockdown Stuck</a
+				>
+				<a href="{% url 'community:filter' 'Open Community' %}" class="list-group-item list-group-item-action"
+					>Open Community</a
+				>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="center" class="d-flex flex-grow-1" style="width: 620px;">
+		<div style="overflow: scroll; height: 620px;">
+		{% if posts %}
+			{% for post in posts %}
+				<div class="card text-center m-2">
+					<div class="card-header d-flex flex-column">
+						<div><strong>{{ post.title}}</strong></div>
+						<div class="d-flex justify-content-around">
+							<div>{{ post.community_type }}</div>
+							<div>
+								<i class="fas fa-user"></i> {{ post.author.first_name }} {{ post.author.last_name }} &nbsp; &nbsp;
+								&nbsp;<i class="fas fa-clock"></i>&nbsp; {{ post.time }}
+							</div>
+						</div>
+					</div>
+					<div class="card-body d-flex flex-column">
+						{% if post.image %}
+						<div class="postimage">
+							<img class="w-100 h-50" src="{{ post.image.url }}" alt="sorry image not available">
+						</div>
+						{% endif %}
+						<p class="card-text">
+							{{ post.content }}
+						</p>
+					</div>
+					{% include 'partials/_likes.html' %}
+				</div>
+			{% endfor %}
+		{% else %}
+		<h1 class="text-center">Be New To Post</h1>
+		{% endif %}
+		</div>
+	</div>
+
+	<div id="right-side" class="p-2 m-2">
+		<div style="width: 250px;">
+			<div class="list-group mt-4">
+				<a href="{% url 'community:sort' 'all' %}" class="list-group-item list-group-item-action active">
+					Sort By
+				</a>
+				<a href="{% url 'community:sort' '-likes_count' %}" class="list-group-item list-group-item-action">Most likes</a>
+				<a href="{% url 'community:sort' '-time' %}" class="list-group-item list-group-item-action">Newest</a>
+				<a href="{% url 'community:sort' 'time' %}" class="list-group-item list-group-item-action">Oldest</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+{% block extrajs %}
+	<script type="text/javascript">
+	$(document).ready(function(event){
+		$(document).on('click','#like',function(event){
+			event.preventDefault();
+			var pk = $(this).attr('class');
+			$.ajax({
+				type:'POST',
+				url: $(this).attr('href'),
+				data: {'id': pk, 'csrfmiddlewaretoken':'{{ csrf_token }}'},
+				datatype: 'json',
+				success: function(response){
+					$('#'+pk).html(response['data']);
+				}
+			});
+		});
+	});
+	</script>
+{% endblock extrajs %}

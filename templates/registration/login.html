@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} 
+{% block title %} Login {% endblock title %} {% block content %}
+<div class="container login-container">
+	<h2 class="heading font-weight-light text-center">Login</h2>
+</div>
+<div class="container w-25 card p-4 mt-4">
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %} {{form|crispy}}
+		<input
+			type="submit"
+			value="Login"
+			class="w-100 text-white text-center my-2 btn btn-info"
+		/>
+	</form>
+	<p>
+		I don't have an account?<a href="{% url 'accounts:signup' %}"
+			>Sign Up here.</a
+		>
+	</p>
+</div>
+{% endblock content %}
+

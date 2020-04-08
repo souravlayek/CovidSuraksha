@@ -1,0 +1,7 @@
+<div id="{{ post.id }}">
+<div class="card-footer text-muted d-flex justify-content-around ">
+	<a href="{% url 'community:like' post.id %}" id="like" class="{{ post.id }}"><i class="far fa-thumbs-up"></i>&nbsp;{{ post.likes_count }}</a>
+	<a href="{% url 'community:dislike' post.id %}" id="like"  class="{{ post.id }}"><i class="far fa-thumbs-down"></i>&nbsp;{{ post.dislikes_count}}</a>
+	<a href="{% url 'community:comment' post.id %}"><i class="far fa-comment-alt"></i>&nbsp;{{post.comment_count}}</a>
+</div>
+</div>

@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} 
+{% block title %} Post | {{ post.title }} {% endblock title %} {% block content %}
+                <div class="card text-center m-5">
+					<div class="card-header d-flex flex-column">
+						<div><strong> New Post </strong></div>
+						<div class="d-flex justify-content-around">
+							<div>{{ post.community_type }}</div>
+							<div>
+								<i class="fas fa-user"></i> {{ post.author.first_name }} {{ post.author.last_name }} &nbsp; &nbsp;
+								&nbsp;<i class="fas fa-clock"></i>&nbsp; {{ post.time }}
+							</div>
+						</div>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">{{ post.title }}</h5>
+						{% if post.image %}
+						<div class="postimage">
+							<img src="{{ post.image.url }}" alt="sorry image not available">
+						</div>
+						{% endif %}
+						<p class="card-text">
+							{{ post.content }}
+						</p>
+					</div>
+					<div
+						class="card-footer text-muted d-flex justify-content-around"
+					>
+						<a href="{% url 'community:like' post.id %}" id="like"><i class="far fa-thumbs-up"></i>&nbsp;{{ post.likes_count }}</a>
+						<a href="{% url 'community:dislike' post.id %}" id="like"><i class="far fa-thumbs-down"></i>&nbsp;{{ post.dislikes_count}}</a>
+						<a href="{% url 'community:comment' post.id %}"><i class="far fa-comment-alt"></i>&nbsp;{{post.comment_count}}</a>
+					</div>
+                    <div class="card-footer text-muted">
+                    <form action="{% url 'community:comment' post.id %}" method="POST" class="">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button
+                            type="submit"
+                            class="text-white text-center btn btn-info h-25"
+                        ><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </form>
+                    </div>
+                    
+                    {% for i in comments %}
+                    <div class="d-flex flex-row pl-4 justify-content-between ml-4 mr-4">
+                        <h6>{{ i.text }}</h6>
+                        <p> {{ i.writter }} @ {{ i.posting_time}}</p>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    
+				</div>
+{% endblock content %}
+

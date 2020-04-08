@@ -1,0 +1,11 @@
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">{{ i.name }}</h6>
+        <p class="card-text"> {{ i.username }}</p>
+        <p class="card-text"> {{ i.dateofinfection }}</p>
+        <a href="{% url 'pinfo:detail' i.id %}" class="btn btn-primary">view more</a>
+      </div>
+    </div>
+  </div>

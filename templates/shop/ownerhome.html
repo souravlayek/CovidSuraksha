@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav %}
+<li><a href="{% url 'shop:addshop' %}"><i class="fas fa-plus"></i>&nbsp; Add shop</a></li>
+<li><a href="{% url 'shop:userview' %}"> shop</a></li>
+{% endblock nav %}
+
+{% block content %}
+<div style="margin-top: 150px">
+    {% if shops %}
+    <div class="row">
+    {% for i in shops %}
+        {% include 'partials/_shopcardowner.html' %}
+    {% endfor %}
+    </div>
+    {% else %}
+    <h2>nothing here.</h2>
+    {% endif %}
+
+</div>
+
+{% endblock content %}
