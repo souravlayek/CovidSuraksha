@@ -16,32 +16,11 @@
         <img src="{{profile.profilepic.url}}" alt="">
     </div>
     <h4>{{ profile.user.first_name }} {{ profile.user.last_name }}</h4>
-    <h4>{{ profile.shopname }}</h4>
     <h4>{{ profile.address }}</h4>
     <h4>{{ profile.town }}</h4>
     <h4>{{ profile.district }}</h4>
     <h4>{{ profile.state }}</h4>
     <h4>{{ profile.pin }}</h4>
-    {% elif profile.user.usertype == 'patient' %}
-    <div class="profile-pic">
-        <img src="{{profile.profilepic.url}}" alt="">
-    </div>
-    <h4>{{ profile.user.first_name }} {{ profile.user.last_name }}</h4>
-    <h4>{{ profile.dateofinfection }}</h4>
-    <h4>{{ profile.address }}</h4>
-    <h4>{{ profile.town }}</h4>
-    <h4>{{ profile.district }}</h4>
-    <h4>{{ profile.state }}</h4>
-    <h4>{{ profile.pin }}</h4>
-    <h6>{{ profile.notes }}</h6>
-    {% elif profile.user.usertype == 'ngo' %}
-    <h4>{{ profile.name }}</h4>
-    <h4>{{ profile.address }}</h4>
-    <h4>{{ profile.town }}</h4>
-    <h4>{{ profile.district }}</h4>
-    <h4>{{ profile.state }}</h4>
-    <h4>{{ profile.pin }}</h4>
-    <h6>{{ profile.notes }}</h6>
     {% elif profile.user.usertype == 'user' %}
     <div class="profile-pic">
         <img src="{{ profile.profilepic.url }}" alt="">

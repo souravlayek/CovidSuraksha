@@ -18,6 +18,7 @@ def get_object_or_notfound(klass, *args, **kwargs):
     except:
         return False
 
+
 @login_required
 def PostCreate(request):
     if request.method == 'POST':
@@ -87,8 +88,6 @@ def CommentPost(request,id):
             instances = form.save(commit=False)
             instances.post = post
             instances.writter = request.user.first_name + ' ' + request.user.last_name
-            print(request.user)
-            print(instances)
             instances.save()
             post_instances = post
             post_instances.comment_count += 1
@@ -98,7 +97,7 @@ def CommentPost(request,id):
         form = CommentForm
         comments = get_object_or_notfound(Comments, post = post)
         return render(request, 'community/comment.html', {'form':form,'comments':comments,'post':post})
-
+@login_required
 def search(request):
     if request.GET:
         search_term = request.GET['search_term']
@@ -118,7 +117,7 @@ def search(request):
         return render(request, 'community/feed.html', context)
     else:
         return redirect('home')
-
+@login_required
 def filterpost(request,filter_by):
     if filter_by != "all":
         filter_results = _get_queryset(Post).filter(community_type=filter_by)
@@ -126,7 +125,7 @@ def filterpost(request,filter_by):
         filter_results = _get_queryset(Post)
     form = PostForm
     return render(request,'community/feed.html',{'posts':filter_results,'form':form})
-
+@login_required
 def sortpost(request,sort_by):
     if sort_by != "all":
         sort_results = _get_queryset(Post).order_by(sort_by)

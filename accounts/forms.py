@@ -32,4 +32,4 @@ class DoctorProfileForm(ModelForm):
 class UserProfileForm(ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['occupation', 'address', 'town', 'district','state','pin','notes']
+        fields = ['occupation','profilepic', 'address', 'town', 'district','state','pin','notes']

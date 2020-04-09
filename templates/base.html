@@ -74,7 +74,22 @@
   <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
-  {% block extrajs %}
-  {% endblock extrajs %}
+  	<script type="text/javascript">
+	$(document).ready(function(event){
+		$(document).on('click','#like',function(event){
+			event.preventDefault();
+			var pk = $(this).attr('class');
+			$.ajax({
+				type:'POST',
+				url: $(this).attr('href'),
+				data: {'id': pk, 'csrfmiddlewaretoken':'{{ csrf_token }}'},
+				datatype: 'json',
+				success: function(response){
+					$('#'+pk).html(response['data']);
+				}
+			});
+		});
+	});
+	</script>
 </body>
 </html>

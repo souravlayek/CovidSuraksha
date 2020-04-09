@@ -93,22 +93,3 @@
 	</div>
 </div>
 {% endblock content %}
-{% block extrajs %}
-	<script type="text/javascript">
-	$(document).ready(function(event){
-		$(document).on('click','#like',function(event){
-			event.preventDefault();
-			var pk = $(this).attr('class');
-			$.ajax({
-				type:'POST',
-				url: $(this).attr('href'),
-				data: {'id': pk, 'csrfmiddlewaretoken':'{{ csrf_token }}'},
-				datatype: 'json',
-				success: function(response){
-					$('#'+pk).html(response['data']);
-				}
-			});
-		});
-	});
-	</script>
-{% endblock extrajs %}

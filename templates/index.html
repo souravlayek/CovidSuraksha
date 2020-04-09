@@ -19,7 +19,11 @@ Home
   <!-- ======= Intro Section ======= -->
   <section id="intro" class="clearfix">
     <div class="container">
-
+        {% if not user.profileupdated %}
+        <div class="alert alert-secondary" role="alert">
+          Update your profile to use the funtionality 
+        </div>
+        {% endif %}
       <div class="intro-img">
         <img src="{% static 'assets/img/info.svg' %}" alt="" class="img-fluid">
       </div>
