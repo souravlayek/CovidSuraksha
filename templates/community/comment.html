@@ -1,5 +1,15 @@
 {% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} 
-{% block title %} Post | {{ post.title }} {% endblock title %} {% block content %}
+{% block title %} Post | {{ post.title }} {% endblock title %} 
+{% block nav %}
+<li class="drop-down"><a href="{% url 'community:communityhome' %}">Community</a>
+            <ul>
+              <li><a href="{% url 'community:filter' 'Open Community' %}">Global community</a></li>
+              <li><a href="{% url 'community:filter' 'Quarentine Community' %}">Quarentine Community</a></li>
+              <li><a href="{% url 'community:filter' 'Lockdown stuck Community' %}">Lockdown stuck Community</a></li>
+            </ul>
+          </li>
+{% endblock nav %}
+{% block content %}
                 <div class="card text-center m-5">
 					<div class="card-header d-flex flex-column">
 						<div><strong> New Post </strong></div>

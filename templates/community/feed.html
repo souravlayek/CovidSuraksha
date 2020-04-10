@@ -1,6 +1,13 @@
 {% extends 'base.html' %} {% load static %}
 {% block nav %}
 <li><a href="{% url 'community:addpost' %}"><i class="fas fa-plus"></i> New Post</a></li>
+<li class="drop-down"><a href="{% url 'community:communityhome' %}">Community</a>
+            <ul>
+              <li><a href="{% url 'community:filter' 'Open Community' %}">Global community</a></li>
+              <li><a href="{% url 'community:filter' 'Quarentine Community' %}">Quarentine Community</a></li>
+              <li><a href="{% url 'community:filter' 'Lockdown stuck Community' %}">Lockdown stuck Community</a></li>
+            </ul>
+          </li>
 {% endblock nav %}
 {% block content %}
 <div id="fullfeed" class="d-flex flex-wrap" style="margin-top: 100px; max-width:1920px;">
