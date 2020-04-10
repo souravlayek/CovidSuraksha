@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import MyUser
 from django.utils.timezone import datetime
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator,MinValueValidator
 
 
 
@@ -18,7 +18,7 @@ class Patient(models.Model):
     town = models.CharField(max_length=50)
     district = models.CharField(max_length=50) 
     state = models.CharField(max_length=50)
-    pin = models.IntegerField(validators=[MaxValueValidator(999999)])
+    pin = models.IntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     def __str__(self):
         return self.username
     

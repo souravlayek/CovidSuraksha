@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import MaxValueValidator
+from django.core.validators import MaxValueValidator,MinValueValidator
 
 
 class MyUser(AbstractUser):
@@ -21,7 +21,7 @@ class DoctorProfile(models.Model):
     town = models.CharField(max_length=50)
     district = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
-    pin = models.IntegerField(validators=[MaxValueValidator(999999)])
+    pin = models.IntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     def __str__(self):
         return self.user.username
 
@@ -32,7 +32,7 @@ class ShopManagerProfile(models.Model):
     town = models.CharField(max_length=50)
     district = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
-    pin = models.IntegerField(validators=[MaxValueValidator(999999)])
+    pin = models.IntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     def __str__(self):
         return self.user.username
 
@@ -44,7 +44,7 @@ class UserProfile(models.Model):
     town = models.CharField(max_length=50)
     district = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
-    pin = models.IntegerField(validators=[MaxValueValidator(999999)])
+    pin = models.IntegerField(validators=[MaxValueValidator(999999),MinValueValidator(100000)])
     notes = models.CharField(max_length=250, null=True)
     def __str__(self):
         return self.user.username
