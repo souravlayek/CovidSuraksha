@@ -45,6 +45,12 @@ we are at home and as a human we have to communicate and we have a learge number
 -   anyone who need medical help doctor or the user who is in medical field will help him.
     and we know the user will find more great way to use it.
 
+### Software and Hardware Needed
+**For user*
+* hardware a pc or a mobile and a active internet connection
+* software a web browser
+
+
 #### The process and data flow diagram
 
 ![doctor flow cart](doc.jpg)
