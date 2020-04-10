@@ -49,3 +49,8 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+class ContactUs(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    massage = models.CharField(max_length=250)
+

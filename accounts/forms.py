@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import MyUser,DoctorProfile,UserProfile,ShopManagerProfile
+from .models import MyUser,DoctorProfile,UserProfile,ShopManagerProfile,ContactUs
 
 
 class MyUserCreationForm(UserCreationForm):
@@ -33,3 +33,13 @@ class UserProfileForm(ModelForm):
     class Meta:
         model = UserProfile
         fields = ['occupation','profilepic', 'address', 'town', 'district','state','pin','notes']
+
+class ContactUsForm(ModelForm):
+    class Meta:
+        model = ContactUs
+        widgets = {
+            'massage' : forms.Textarea(attrs={
+                'placeholder': "Enter Your Massage Here"
+            })
+        }
+        fields = ['name','email', 'massage']

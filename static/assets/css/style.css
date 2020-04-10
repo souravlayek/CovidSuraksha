@@ -133,7 +133,7 @@ h6 {
 }
 
 #header .logo h1 {
-	font-size: 36px;
+	font-size: 38px;
 	margin: 0;
 	padding: 0;
 	line-height: 1;
@@ -155,12 +155,6 @@ h6 {
 	text-decoration: none;
 }
 
-#header .logo img {
-	padding: 0;
-	margin: 7px 0;
-	max-height: 26px;
-}
-
 .main-pages {
 	margin-top: 60px;
 }
@@ -168,11 +162,6 @@ h6 {
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
-/* Desktop Navigation */
-/* .main-nav {
-	/* Drop Down */
-/* Deep Drop Down */
-
 .main-nav,
 .main-nav * {
 	margin: 0;
@@ -675,48 +664,6 @@ h6 {
 	font-size: 14px;
 }
 
-#footer .footer-top {
-	background: #004a99;
-	padding: 60px 0 30px 0;
-}
-
-#footer .footer-top h4 {
-	font-size: 14px;
-	font-weight: bold;
-	color: #fff;
-	text-transform: uppercase;
-	position: relative;
-	padding-bottom: 10px;
-}
-
-#footer .footer-top .footer-links {
-	margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-links ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	justify-content: space-around;
-	flex-direction: row;
-}
-
-#footer .footer-top .footer-links ul li {
-	padding: 8px 0;
-}
-
-#footer .footer-top .footer-links ul li:first-child {
-	padding-top: 0;
-}
-
-#footer .footer-top .footer-links ul a {
-	color: #ecf5ff;
-}
-
-#footer .footer-top .footer-links ul a:hover {
-	color: #74b5fc;
-}
 #footer .copyright {
 	text-align: center;
 	padding-top: 30px;

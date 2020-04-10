@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 
 from .forms import MyUserCreationForm, MyUserChangeForm
-from .models import MyUser,DoctorProfile,ShopManagerProfile,UserProfile
+from .models import MyUser,DoctorProfile,ShopManagerProfile,UserProfile,ContactUs
 
 
 class MyUserAdmin(UserAdmin):
@@ -21,3 +21,4 @@ admin.site.unregister(Group)
 admin.site.register(DoctorProfile)
 admin.site.register(UserProfile)
 admin.site.register(ShopManagerProfile)
+admin.site.register(ContactUs)
