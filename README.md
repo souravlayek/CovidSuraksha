@@ -47,9 +47,9 @@ we are at home and as a human we have to communicate and we have a learge number
 
 #### The process and data flow diagram
 
-![doctor flow cart](./doc.jpg)
-![shop flow cart](./shop.jpg)
-![community flow cart](./community.jpg)
+![doctor flow cart](doc.jpg)
+![shop flow cart](shop.jpg)
+![community flow cart](community.jpg)
 
 #### Using this website
 
