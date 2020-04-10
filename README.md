@@ -46,7 +46,7 @@ we are at home and as a human we have to communicate and we have a learge number
     and we know the user will find more great way to use it.
 
 ### Software and Hardware Needed
-**For user*
+
 * hardware a pc or a mobile and a active internet connection
 * software a web browser
 
